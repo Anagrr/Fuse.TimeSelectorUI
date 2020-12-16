@@ -1,0 +1,29 @@
+{
+  "RootNamespace":"",
+  "Packages": [
+    "Fuse",
+    "FuseJS"
+  ],
+  "Includes": [
+    "*",
+    "**.js:FuseJS"
+  ],
+  "Title": "TimeSelector UI",
+  "Version": "0.0.1",
+
+  "Mobile": {
+		"Orientations": "Portrait"
+	},
+  "Android": {
+		"ApplicationLabel": "TimeSelector UI",
+    "Package": "com.anagr.timeselectorui",
+    "Icons":{
+			"LDPI": "Assets/app-icon.png",
+			"MDPI": "Assets/app-icon.png",
+			"HDPI": "Assets/app-icon.png",
+			"XHDPI": "Assets/app-icon.png",
+			"XXHDPI": "Assets/app-icon.png",
+			"XXXHDPI": "Assets/app-icon.png"
+		}
+  }
+}
