@@ -1,0 +1,7 @@
+<Circle ux:Class="Wave" ux:Name="root" Size="6" IsEnabled="false">
+    <double ux:Property="Delay"/>
+    <Stroke Width="20" Color="#fff1"/>
+    <WhileEnabled>
+        <Cycle Target="root.Size" Low="0" High="1000" Waveform="Sawtooth" Frequency=".1" FrequencyBack="1000"/>
+    </WhileEnabled>
+</Circle>

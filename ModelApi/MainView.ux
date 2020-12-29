@@ -23,6 +23,9 @@
                         <Resize Y="1" RelativeTo="SizeChange" Duration="0.25"/>
                         <Move Y="1" RelativeTo="PositionChange" Duration="0.25"/>
                     </LayoutAnimation>
+                    <Wave ux:Name="w1"/>
+                    <Wave ux:Name="w2"/>
+                    <Wave ux:Name="w3"/>
                 </Rectangle>
                 
                 <Circle ux:Name="c1" Color="#fffa" Size="6"/>
@@ -47,10 +50,14 @@
                     BottomTitle="WHEN"
                     ScrollItems="{prices}">
                 <Activated>
-                    <Set indicator.Height="30"/>
+                    <!-- <Set indicator.Height="30"/>
                     <Set indicator.Y="-2" Delay=".3"/>
                     <Set indicator.Height="10" Delay=".28"/>
-                    <Set indicator.Anchor="50%,0%" Delay=".3"/>
+                    <Set indicator.Anchor="50%,0%" Delay=".3"/> -->
+                    <Set indicator.LayoutMaster="c1"/>
+                    <Set w1.IsEnabled="true"/>
+                    <Set w2.IsEnabled="true" Delay="3"/>
+                    <Set w3.IsEnabled="true" Delay="6"/>
 				</Activated>
 
                 <SpentListItem ux:Template="ScrollItem" Value="{data()}"/>
@@ -61,10 +68,11 @@
                     BottomTitle="WHERE"
                     ScrollItems="{weeks}">
                 <Activated>
-                    <Set indicator.Height="30"/>
+                    <!-- <Set indicator.Height="30"/>
                     <Set indicator.Y="29" Delay=".3"/>
                     <Set indicator.Height="10" Delay=".3"/>
-                    <Set indicator.Anchor="50%,100%" Delay=".3"/>
+                    <Set indicator.Anchor="50%,100%" Delay=".3"/> -->
+                    <Set indicator.LayoutMaster="c2"/>
 				</Activated>
                 <WeeksListItem ux:Template="ScrollItem" Value="{data()}" />
             </TSPage>
@@ -73,10 +81,11 @@
                     CenterTitle="ALL AIRPORTS"
                     BottomTitle="WHAT">
                 <Activated>
-                    <Set indicator.Height="30"/>
+                    <!-- <Set indicator.Height="30"/>
                     <Set indicator.Y="50" Delay=".3"/>
                     <Set indicator.Height="10" Delay=".3"/>
-                    <Set indicator.Anchor="50%,100%" Delay=".3"/>
+                    <Set indicator.Anchor="50%,100%" Delay=".3"/> -->
+                    <Set indicator.LayoutMaster="c3"/>
                     <Set p3.ScrollItems="{locating}" Delay=".3"/>
                     <Set p3.ScrollItems="{airports}" Delay="2"/>
 				</Activated>

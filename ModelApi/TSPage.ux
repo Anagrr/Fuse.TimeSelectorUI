@@ -11,14 +11,6 @@
 				<NavigationMotion GotoDuration="0.4" GotoEasing="CircularOut" />
 			</LinearNavigation>
 			<SwipeNavigate SwipeDirection="Left" />
-			<!-- <Each Items="{profiles}">
-				<Card Name="{resource}" CachingMode="Never">
-					<Image File="{resource}"/>
-					<Clicked>
-						<NavigateTo Target="{resource}"/>
-					</Clicked>
-				</Card>
-			</Each> -->
             <Each Items="{ReadProperty ScrollItems}" TemplateSource="this" TemplateKey="ScrollItem"/>
 		</Panel>
 
