@@ -1,0 +1,31 @@
+<Panel ux:Class="AirportsListItem" Alignment="CenterLeft" Width="350">
+    <string ux:Property="Value"/>
+
+    <WhileTrue Value="{ReadProperty Value} == ''">
+        <StackPanel Orientation="Horizontal" ux:Name="locating" Margin="0, 65" ItemSpacing="15">
+            <Circle ux:Name="circle" Size="50" Padding="5" StartAngleDegrees="-90" LengthAngleDegrees="360">
+                <Stroke Color="White" Width="3"/>
+                <Image ux:Name="compas" File="../Assets/Images/compas-icon.png" StretchMode="UniformToFill"/>
+            </Circle>
+            <Text Value="Locating" FontSize="25" Font="Medium" Color="White" Alignment="VerticalCenter"/>
+        </StackPanel>
+        <AddingAnimation>
+            <Change circle.LengthAngleDegrees="1" Duration="1.5"/>
+            <Rotate Target="compas" Degrees="-360" Duration="1.5"/>
+        </AddingAnimation>
+    </WhileTrue>
+
+    <WhileFalse Value="{ReadProperty Value} == ''">
+        <Text ux:Name="txt" Value="{ReadProperty Value}" FontSize="90" Font="Medium" Color="White"
+            TextWrapping="Wrap" LineSpacing="-30" Margin="0,0,0,30" Alignment="VerticalCenter"/>
+    </WhileFalse>
+
+    
+
+    <EnteringAnimation Scale="0.35">
+        <Move X="-3" RelativeTo="Size" />
+    </EnteringAnimation>
+    <ExitingAnimation Scale="0.5">
+        <Move X="3" RelativeTo="Size" />
+    </ExitingAnimation>
+</Panel>

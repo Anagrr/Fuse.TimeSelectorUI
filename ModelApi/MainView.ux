@@ -1,2 +1,99 @@
 <App>
+
+    <JavaScript>
+        var Observable = require('FuseJS/Observable');
+        module.exports = {
+            activeIndex : Observable(0),
+            prices: [200, 400, 600, 800, 1000], 
+            weeks: [2,3,4,5,6,7,8,9,10],
+            airports : ["New York", "Dallas", "Miami", "Los Angeles"],
+            locating: [""],
+            stub:[]
+        };
+    </JavaScript>
+    <ClientPanel>
+        <Rectangle Layer="Background">
+            <LinearGradient AngleDegrees="-45">
+                <GradientStop ux:Name="from" Offset="0" Color="#7D51FB"/>
+                <GradientStop ux:Name="to" Offset="1" Color="#50C9FF"/>
+            </LinearGradient>
+            <StackPanel ItemSpacing="15" Alignment="TopLeft" Margin="35, 25">
+                <Rectangle ux:Name="indicator" LayoutMaster="c1" Layer="Overlay" Color="#fff" Size="10, 10" Y="-2" CornerRadius="50" Anchor="50%,0%">
+                    <LayoutAnimation>
+                        <Resize Y="1" RelativeTo="SizeChange" Duration="0.25"/>
+                        <Move Y="1" RelativeTo="PositionChange" Duration="0.25"/>
+                    </LayoutAnimation>
+                </Rectangle>
+                
+                <Circle ux:Name="c1" Color="#fffa" Size="6"/>
+                <Circle ux:Name="c2" Color="#fffa" Size="6"/>
+                <Circle ux:Name="c3" Color="#fffa" Size="6"/>
+                <Circle ux:Name="c4" Color="#fffa" Size="6"/>
+            </StackPanel>
+            <WhileTrue Value="{activeIndex} == 1">
+                <Change Target="from.Color" Value="#D83C7E" Duration=".4"/>
+                <Change Target="to.Color" Value="#7D51FB" Duration=".4"/>
+            </WhileTrue>
+            <WhileTrue Value="{activeIndex} == 2">
+                <Change from.Color="#E9715E" Duration=".4"/>
+                <Change to.Color="#D83C7E" Duration=".4"/>
+            </WhileTrue>
+        </Rectangle>
+
+        <PageControl ActiveIndex="{activeIndex}" Orientation="Vertical" CachingMode="Never">
+
+            <TSPage TopTitle="HOW MUCH DO YOU WANT TO SPEND?"
+                    CenterTitle="US DOLLAR"
+                    BottomTitle="WHEN"
+                    ScrollItems="{prices}">
+                <Activated>
+                    <Set indicator.Height="30"/>
+                    <Set indicator.Y="-2" Delay=".3"/>
+                    <Set indicator.Height="10" Delay=".28"/>
+                    <Set indicator.Anchor="50%,0%" Delay=".3"/>
+				</Activated>
+
+                <SpentListItem ux:Template="ScrollItem" Value="{data()}"/>
+            </TSPage>
+    
+            <TSPage TopTitle="WHEN            DO YOU WANT TO TRAVEL?"
+                    CenterTitle="WEEKS"
+                    BottomTitle="WHERE"
+                    ScrollItems="{weeks}">
+                <Activated>
+                    <Set indicator.Height="30"/>
+                    <Set indicator.Y="29" Delay=".3"/>
+                    <Set indicator.Height="10" Delay=".3"/>
+                    <Set indicator.Anchor="50%,100%" Delay=".3"/>
+				</Activated>
+                <WeeksListItem ux:Template="ScrollItem" Value="{data()}" />
+            </TSPage>
+            
+            <TSPage ux:Name="p3" TopTitle="WHERE           DO YOU WANT TO FLY FROM?"
+                    CenterTitle="ALL AIRPORTS"
+                    BottomTitle="WHAT">
+                <Activated>
+                    <Set indicator.Height="30"/>
+                    <Set indicator.Y="50" Delay=".3"/>
+                    <Set indicator.Height="10" Delay=".3"/>
+                    <Set indicator.Anchor="50%,100%" Delay=".3"/>
+                    <Set p3.ScrollItems="{locating}" Delay=".3"/>
+                    <Set p3.ScrollItems="{airports}" Delay="2"/>
+				</Activated>
+                <Deactivated>
+                    <Set p3.ScrollItems="{stub}"/>
+                </Deactivated>
+                <AirportsListItem ux:Name="{data()}" ux:Template="ScrollItem" Value="{data()}" CachingMode="Never" />            
+            </TSPage>
+        </PageControl>      
+            
+        <StackPanel Alignment="Bottom" Margin="40, 25">
+            <fa.AngleUp ux:Name="angleUp" Color="#fff0">                
+                <WhileTrue Value="{activeIndex} > 0">
+                    <Change angleUp.Color="#fff5" Duration=".4"/>
+                </WhileTrue>
+            </fa.AngleUp>
+            <fa.AngleDown />
+        </StackPanel>
+    </ClientPanel>
 </App>

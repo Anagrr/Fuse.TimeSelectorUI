@@ -6,7 +6,8 @@
   ],
   "Includes": [
     "*",
-    "**.js:FuseJS"
+    "**.js:FuseJS",
+    "**.png:Bundle"
   ],
   "Title": "TimeSelector UI",
   "Version": "0.0.1",
@@ -18,12 +19,12 @@
 		"ApplicationLabel": "TimeSelector UI",
     "Package": "com.anagr.timeselectorui",
     "Icons":{
-			"LDPI": "Assets/app-icon.png",
-			"MDPI": "Assets/app-icon.png",
-			"HDPI": "Assets/app-icon.png",
-			"XHDPI": "Assets/app-icon.png",
-			"XXHDPI": "Assets/app-icon.png",
-			"XXXHDPI": "Assets/app-icon.png"
+			"LDPI": "Assets/Images/app-icon.png",
+			"MDPI": "Assets/Images/app-icon.png",
+			"HDPI": "Assets/Images/app-icon.png",
+			"XHDPI": "Assets/Images/app-icon.png",
+			"XXHDPI": "Assets/Images/app-icon.png",
+			"XXXHDPI": "Assets/Images/app-icon.png"
 		}
   }
 }

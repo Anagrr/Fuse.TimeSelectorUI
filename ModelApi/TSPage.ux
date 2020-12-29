@@ -1,0 +1,36 @@
+<Page ux:Class="TSPage" >
+    <string ux:Property="TopTitle"/>
+    <string ux:Property="CenterTitle"/>
+    <string ux:Property="BottomTitle"/>
+    <object ux:Property="ScrollItems" />
+
+    <StackPanel Alignment="CenterLeft" Width="100%" ux:Name="root">
+        <Text Margin="40,0" Alignment="Left" TextWrapping="Wrap" Value="{ReadProperty TopTitle}" Width="150" Color="White" FontSize="22"/>
+        <Panel Margin="40, 0">
+			<LinearNavigation>
+				<NavigationMotion GotoDuration="0.4" GotoEasing="CircularOut" />
+			</LinearNavigation>
+			<SwipeNavigate SwipeDirection="Left" />
+			<!-- <Each Items="{profiles}">
+				<Card Name="{resource}" CachingMode="Never">
+					<Image File="{resource}"/>
+					<Clicked>
+						<NavigateTo Target="{resource}"/>
+					</Clicked>
+				</Card>
+			</Each> -->
+            <Each Items="{ReadProperty ScrollItems}" TemplateSource="this" TemplateKey="ScrollItem"/>
+		</Panel>
+
+        <Text Margin="40,0" Font="Medium" Alignment="Left" TextWrapping="Wrap" Value="{ReadProperty CenterTitle}" Width="150" Color="#fff5" FontSize="16"/>
+    </StackPanel>
+    
+    <Text Alignment="Bottom" Margin="65, 28" Value="{ReadProperty BottomTitle}" FontSize="13" Font="Medium" Color="White"/>
+    
+    <EnteringAnimation Scale="3.5">
+        <Change this.Opacity="0"/>
+     </EnteringAnimation>
+     <ExitingAnimation Scale="3.5">
+        <Change this.Opacity="0"/>
+     </ExitingAnimation>
+</Page>

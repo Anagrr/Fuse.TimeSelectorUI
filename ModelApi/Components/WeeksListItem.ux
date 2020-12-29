@@ -1,0 +1,16 @@
+<Panel ux:Class="WeeksListItem" Alignment="CenterLeft" Width="155">
+    <int ux:Property="Value"/>
+    <Text ux:Name="txt" Value="{ReadProperty Value}" FontSize="100" Font="Thin" Color="White" Opacity=".2">
+        <WhileActive>
+            <Change txt.Font="Medium" DelayBack=".1" DurationBack="0"/>
+            <Change txt.Opacity="1" DelayBack=".1" DurationBack="0"/>
+        </WhileActive>
+    </Text>
+    
+    <EnteringAnimation Scale="0.35">
+        <Move X="-3" RelativeTo="Size" />
+    </EnteringAnimation>
+    <ExitingAnimation Scale="0.1">
+        <Move X="4" RelativeTo="Size" />
+    </ExitingAnimation>
+</Panel>

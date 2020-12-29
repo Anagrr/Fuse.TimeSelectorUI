@@ -1,0 +1,23 @@
+<StackPanel ux:Class="SpentListItem" Orientation="Horizontal" Width="250" Alignment="CenterLeft">
+    <int ux:Property="Value"/>
+    <Text Value="$" ux:Name="dollar" FontSize="100" Font="WorkSansLight"
+            Color="White" Opacity="0" Alignment="VerticalCenter">
+        <WhileActive>
+            <Change dollar.Opacity="1" Duration=".5" DelayBack=".5" DurationBack="0"/>
+        </WhileActive>
+    </Text>
+    <Text ux:Name="text" Value="{ReadProperty Value}" FontSize="90" Font="Thin"
+            Color="White" Alignment="VerticalCenter"  Opacity=".3">
+        <WhileActive>
+            <Change text.Font="Medium" DelayBack=".5" DurationBack="0"/>
+            <Change text.Opacity="1" DelayBack=".5" DurationBack="0"/>
+        </WhileActive>
+    </Text>
+
+    <EnteringAnimation Scale="0.35">
+        <Move X="-4" RelativeTo="Size" />
+    </EnteringAnimation>
+    <ExitingAnimation Scale=".3">
+        <Move X="2 + {ReadProperty Value} / 1000 / 4" RelativeTo="Size" />
+    </ExitingAnimation>
+</StackPanel>
