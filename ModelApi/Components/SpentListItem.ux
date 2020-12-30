@@ -3,14 +3,14 @@
     <Text Value="$" ux:Name="dollar" FontSize="100" Font="WorkSansLight"
             Color="White" Opacity="0" Alignment="VerticalCenter">
         <WhileActive>
-            <Change dollar.Opacity="1" Duration=".5" DelayBack=".5" DurationBack="0"/>
+            <Change dollar.Opacity="1" Duration=".5" DelayBack=".25" DurationBack="0"/>
         </WhileActive>
     </Text>
     <Text ux:Name="text" Value="{ReadProperty Value}" FontSize="90" Font="Thin"
             Color="White" Alignment="VerticalCenter"  Opacity=".3">
         <WhileActive>
-            <Change text.Font="Medium" DelayBack=".5" DurationBack="0"/>
-            <Change text.Opacity="1" DelayBack=".5" DurationBack="0"/>
+            <Change text.Font="Medium" DelayBack=".25" DurationBack="0"/>
+            <Change text.Opacity="1" DelayBack=".25" DurationBack="0"/>
         </WhileActive>
     </Text>
 

@@ -6,7 +6,12 @@
             activeIndex : Observable(0),
             prices: [200, 400, 600, 800, 1000], 
             weeks: [2,3,4,5,6,7,8,9,10],
-            airports : ["New York", "Dallas", "Miami", "Los Angeles"],
+            airports : [
+                ["New","York"],
+                ["Dallas"],
+                ["Miami"],
+                ["Los","Angeles"]
+            ],
             locating: [""],
             stub:[]
         };
@@ -17,31 +22,31 @@
                 <GradientStop ux:Name="from" Offset="0" Color="#7D51FB"/>
                 <GradientStop ux:Name="to" Offset="1" Color="#50C9FF"/>
             </LinearGradient>
-            <StackPanel ItemSpacing="15" Alignment="TopLeft" Margin="35, 25">
-                <Rectangle ux:Name="indicator" LayoutMaster="c1" Layer="Overlay" Color="#fff" Size="10, 10" Y="-2" CornerRadius="50" Anchor="50%,0%">
-                    <LayoutAnimation>
-                        <Resize Y="1" RelativeTo="SizeChange" Duration="0.25"/>
-                        <Move Y="1" RelativeTo="PositionChange" Duration="0.25"/>
-                    </LayoutAnimation>
-                    <Wave ux:Name="w1"/>
-                    <Wave ux:Name="w2"/>
-                    <Wave ux:Name="w3"/>
-                </Rectangle>
-                
-                <Circle ux:Name="c1" Color="#fffa" Size="6"/>
-                <Circle ux:Name="c2" Color="#fffa" Size="6"/>
-                <Circle ux:Name="c3" Color="#fffa" Size="6"/>
-                <Circle ux:Name="c4" Color="#fffa" Size="6"/>
-            </StackPanel>
-            <WhileTrue Value="{activeIndex} == 1">
-                <Change Target="from.Color" Value="#D83C7E" Duration=".4"/>
-                <Change Target="to.Color" Value="#7D51FB" Duration=".4"/>
-            </WhileTrue>
-            <WhileTrue Value="{activeIndex} == 2">
-                <Change from.Color="#E9715E" Duration=".4"/>
-                <Change to.Color="#D83C7E" Duration=".4"/>
-            </WhileTrue>
         </Rectangle>
+        <StackPanel ItemSpacing="15" Alignment="TopLeft" Margin="35, 20">
+            <Rectangle ux:Name="indicator" LayoutMaster="c1" Layer="Overlay" Color="#fff" Size="10, 10" Y="-2" CornerRadius="50" Anchor="50%,0%">
+                <LayoutAnimation>
+                    <Resize Y="1" RelativeTo="SizeChange" Duration="0.25"/>
+                    <Move Y="1" RelativeTo="PositionChange" Duration="0.25"/>
+                </LayoutAnimation>
+                <Wave ux:Name="w1"/>
+                <Wave ux:Name="w2"/>
+                <Wave ux:Name="w3"/>
+            </Rectangle>
+            
+            <Circle ux:Name="c1" Color="#fffa" Size="6"/>
+            <Circle ux:Name="c2" Color="#fffa" Size="6"/>
+            <Circle ux:Name="c3" Color="#fffa" Size="6"/>
+            <Circle ux:Name="c4" Color="#fffa" Size="6"/>
+        </StackPanel>
+        <WhileTrue Value="{activeIndex} == 1">
+            <Change Target="from.Color" Value="#D83C7E" Duration=".4"/>
+            <Change Target="to.Color" Value="#7D51FB" Duration=".4"/>
+        </WhileTrue>
+        <WhileTrue Value="{activeIndex} == 2">
+            <Change from.Color="#E9715E" Duration=".4"/>
+            <Change to.Color="#D83C7E" Duration=".4"/>
+        </WhileTrue>
 
         <PageControl ActiveIndex="{activeIndex}" Orientation="Vertical" CachingMode="Never">
 
@@ -92,7 +97,7 @@
                 <Deactivated>
                     <Set p3.ScrollItems="{stub}"/>
                 </Deactivated>
-                <AirportsListItem ux:Name="{data()}" ux:Template="ScrollItem" Value="{data()}" CachingMode="Never" />            
+                <AirportsListItem ux:Template="ScrollItem" Items="{data()}" CachingMode="Never" />            
             </TSPage>
         </PageControl>      
             

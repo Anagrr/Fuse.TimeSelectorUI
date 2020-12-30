@@ -1,8 +1,8 @@
-<Panel ux:Class="AirportsListItem" Alignment="CenterLeft" Width="350">
-    <string ux:Property="Value"/>
+<Panel ux:Class="AirportsListItem" Alignment="CenterLeft" Width="100%">
+    <object ux:Property="Items"/>
 
-    <WhileTrue Value="{ReadProperty Value} == ''">
-        <StackPanel Orientation="Horizontal" ux:Name="locating" Margin="0, 65" ItemSpacing="15">
+    <WhileCount Items="{ReadProperty Items}" EqualTo="0">
+        <StackPanel Orientation="Horizontal" ux:Name="locating" Margin="0, 45" ItemSpacing="15">
             <Circle ux:Name="circle" Size="50" Padding="5" StartAngleDegrees="-90" LengthAngleDegrees="360">
                 <Stroke Color="White" Width="3"/>
                 <Image ux:Name="compas" File="../Assets/Images/compas-icon.png" StretchMode="UniformToFill"/>
@@ -13,12 +13,16 @@
             <Change circle.LengthAngleDegrees="1" Duration="1.5"/>
             <Rotate Target="compas" Degrees="-360" Duration="1.5"/>
         </AddingAnimation>
-    </WhileTrue>
+    </WhileCount>
 
-    <WhileFalse Value="{ReadProperty Value} == ''">
-        <Text ux:Name="txt" Value="{ReadProperty Value}" FontSize="90" Font="Medium" Color="White"
-            TextWrapping="Wrap" LineSpacing="-30" Margin="0,0,0,30" Alignment="VerticalCenter"/>
-    </WhileFalse>
+    <WhileCount Items="{ReadProperty Items}" GreaterThan="0">
+        <StackPanel ItemSpacing="-20" Margin="0, 0, 0, 10">
+            <Each Items="{ReadProperty Items}">
+                <Text ux:Name="txt" Value="{data()}" FontSize="70" Font="Medium" Color="White" Alignment="VerticalCenter"/>
+            </Each>
+        </StackPanel>
+        
+    </WhileCount>
 
     
 
