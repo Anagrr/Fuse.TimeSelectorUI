@@ -56,8 +56,8 @@
                     <Set indicator.Anchor="50%,0%" Delay=".3"/> -->
                     <Set indicator.LayoutMaster="c1"/>
                     <Set w1.IsEnabled="true"/>
-                    <Set w2.IsEnabled="true" Delay="3"/>
-                    <Set w3.IsEnabled="true" Delay="6"/>
+                    <Set w2.IsEnabled="true" Delay="6"/>
+                    <Set w3.IsEnabled="true" Delay="12"/>
 				</Activated>
 
                 <SpentListItem ux:Template="ScrollItem" Value="{data()}"/>

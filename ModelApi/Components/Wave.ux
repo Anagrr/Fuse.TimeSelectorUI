@@ -1,7 +1,9 @@
 <Circle ux:Class="Wave" ux:Name="root" Size="6" IsEnabled="false">
     <double ux:Property="Delay"/>
-    <Stroke Width="20" Color="#fff1"/>
+    <Stroke Width="20" Color="#ffffff0A"/>
+    <Stroke Width="20" Offset="-20" Color="#ffffff07"/>
+    <Stroke Width="20" Offset="-40" Color="#ffffff03"/>
     <WhileEnabled>
-        <Cycle Target="root.Size" Low="0" High="1000" Waveform="Sawtooth" Frequency=".1" FrequencyBack="1000"/>
+        <Cycle Target="root.Size" Low="0" High="1300" Waveform="Sawtooth" Frequency=".05" />
     </WhileEnabled>
 </Circle>
