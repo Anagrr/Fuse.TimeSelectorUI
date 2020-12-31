@@ -16,6 +16,7 @@
             stub:[]
         };
     </JavaScript>
+
     <ClientPanel>
         <Rectangle Layer="Background">
             <LinearGradient AngleDegrees="-45">
@@ -24,15 +25,33 @@
             </LinearGradient>
         </Rectangle>
         <StackPanel ItemSpacing="15" Alignment="TopLeft" Margin="35, 20">
-            <Rectangle ux:Name="indicator" LayoutMaster="c1" Layer="Overlay" Color="#fff" Size="10, 10" Y="-2" CornerRadius="50" Anchor="50%,0%">
-                <LayoutAnimation>
-                    <Resize Y="1" RelativeTo="SizeChange" Duration="0.25"/>
-                    <Move Y="1" RelativeTo="PositionChange" Duration="0.25"/>
-                </LayoutAnimation>
-                <Wave ux:Name="w1"/>
-                <Wave ux:Name="w2"/>
-                <Wave ux:Name="w3"/>
-            </Rectangle>
+            
+            <Panel Layer="Overlay" Alignment="Top" Y="-2">
+                <Circle Size="11" Color="White">
+                    <Wave ux:Name="w1" Layer="Overlay"/>
+                    <Wave ux:Name="w2" Layer="Overlay"/>
+                    <Wave ux:Name="w3" Layer="Overlay"/>
+                    
+                    <Translation ux:Name="pos1"/>
+                    <Attractor Target="pos1.Vector" ux:Name="in1" />
+                </Circle>
+                <Rectangle Size="9, 6" Color="White">
+                    <Translation ux:Name="pos2"/>
+                    <Attractor Target="pos2.Vector" ux:Name="in2" />
+                </Rectangle>
+                <Rectangle Size="9, 6" Color="White">
+                    <Translation ux:Name="pos3"/>
+                    <Attractor Target="pos3.Vector" ux:Name="in3" />
+                </Rectangle>
+                <Rectangle Size="9, 6" Color="White">
+                    <Translation ux:Name="pos4"/>
+                    <Attractor Target="pos4.Vector" ux:Name="in4" />
+                </Rectangle>
+                <Circle Size="11" Color="White">
+                    <Translation ux:Name="pos5"/>
+                    <Attractor Target="pos5.Vector" ux:Name="in5" />
+                </Circle>
+            </Panel>
             
             <Circle ux:Name="c1" Color="#fffa" Size="6"/>
             <Circle ux:Name="c2" Color="#fffa" Size="6"/>
@@ -55,14 +74,15 @@
                     BottomTitle="WHEN"
                     ScrollItems="{prices}">
                 <Activated>
-                    <!-- <Set indicator.Height="30"/>
-                    <Set indicator.Y="-2" Delay=".3"/>
-                    <Set indicator.Height="10" Delay=".28"/>
-                    <Set indicator.Anchor="50%,0%" Delay=".3"/> -->
-                    <Set indicator.LayoutMaster="c1"/>
+                    <Set in1.Value="0" />
+                    <Set in2.Value="0" Delay=".05"/>
+                    <Set in3.Value="0" Delay=".1"/>
+                    <Set in4.Value="0" Delay=".15"/>
+                    <Set in5.Value="0" Delay=".2"/>
+
                     <Set w1.IsEnabled="true"/>
                     <Set w2.IsEnabled="true" Delay="6"/>
-                    <Set w3.IsEnabled="true" Delay="12"/>
+                    <Set w3.IsEnabled="true" Delay="12"/> 
 				</Activated>
 
                 <SpentListItem ux:Template="ScrollItem" Value="{data()}"/>
@@ -73,11 +93,11 @@
                     BottomTitle="WHERE"
                     ScrollItems="{weeks}">
                 <Activated>
-                    <!-- <Set indicator.Height="30"/>
-                    <Set indicator.Y="29" Delay=".3"/>
-                    <Set indicator.Height="10" Delay=".3"/>
-                    <Set indicator.Anchor="50%,100%" Delay=".3"/> -->
-                    <Set indicator.LayoutMaster="c2"/>
+                    <Set in1.Value="0,20,0" />
+                    <Set in2.Value="0,20,0" Delay=".05"/>
+                    <Set in3.Value="0,20,0" Delay=".1"/>
+                    <Set in4.Value="0,20,0" Delay=".15"/>
+                    <Set in5.Value="0,20,0" Delay=".2"/>
 				</Activated>
                 <WeeksListItem ux:Template="ScrollItem" Value="{data()}" />
             </TSPage>
@@ -86,11 +106,12 @@
                     CenterTitle="ALL AIRPORTS"
                     BottomTitle="WHAT">
                 <Activated>
-                    <!-- <Set indicator.Height="30"/>
-                    <Set indicator.Y="50" Delay=".3"/>
-                    <Set indicator.Height="10" Delay=".3"/>
-                    <Set indicator.Anchor="50%,100%" Delay=".3"/> -->
-                    <Set indicator.LayoutMaster="c3"/>
+                    <Set in1.Value="0,40,0" />
+                    <Set in2.Value="0,40,0" Delay=".05"/>
+                    <Set in3.Value="0,40,0" Delay=".1"/>
+                    <Set in4.Value="0,40,0" Delay=".15"/>
+                    <Set in5.Value="0,40,0" Delay=".2"/>
+                    
                     <Set p3.ScrollItems="{locating}" Delay=".3"/>
                     <Set p3.ScrollItems="{airports}" Delay="2"/>
 				</Activated>
